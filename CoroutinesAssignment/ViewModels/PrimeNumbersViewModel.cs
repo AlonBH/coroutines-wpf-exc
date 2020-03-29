@@ -6,8 +6,8 @@ namespace CoroutinesAssignment.ViewModels
 {
     public class PrimeNumbersViewModel : Screen, IResult
     {
-        // private const int PRIME_SEARCH_LIMIT = 10000;
-        private const int PRIME_SEARCH_LIMIT = 50;
+        private const int PRIME_SEARCH_LIMIT = 100000;
+        // private const int PRIME_SEARCH_LIMIT = 50;
 
         private readonly IWindowManager _windowManager;
 
@@ -16,7 +16,7 @@ namespace CoroutinesAssignment.ViewModels
             _windowManager = windowManager;
         }
 
-        public async Task<int> CountAllPrimeNumbers()
+        public async Task<int> CountAllPrimeNumbersAsync()
         {
             return await Task.Run(() =>
             {
@@ -29,6 +29,8 @@ namespace CoroutinesAssignment.ViewModels
                         count++;
                     }
                 }
+
+                TryClose();
 
                 return count;
             });
@@ -48,13 +50,12 @@ namespace CoroutinesAssignment.ViewModels
 
         public async void Execute(CoroutineExecutionContext context)
         {
-            var a = CountAllPrimeNumbers();
+            var a = CountAllPrimeNumbersAsync();
 
             _windowManager.ShowDialog(this);
 
             (context.Target as ShellViewModel).Result = (await a).ToString();
             
-            TryClose();
 
             Completed(this, new ResultCompletionEventArgs());
         }

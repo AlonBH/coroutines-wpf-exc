@@ -43,7 +43,10 @@ namespace CoroutinesAssignment.ViewModels
 
         public void Both()
         {
-            Coroutine.BeginExecute(CountPrimes().GetEnumerator());
+            Coroutine.BeginExecute(CountPrimes().GetEnumerator(), new CoroutineExecutionContext()
+            {
+                Target = this
+            });
             Coroutine.BeginExecute(StartGame().GetEnumerator());
         }
     }
