@@ -50,13 +50,12 @@ namespace CoroutinesAssignment.ViewModels
 
         public async void Execute(CoroutineExecutionContext context)
         {
-            var a = CountAllPrimeNumbersAsync();
+            var numberOfPrimes = CountAllPrimeNumbersAsync();
 
             _windowManager.ShowDialog(this);
 
-            (context.Target as ShellViewModel).Result = (await a).ToString();
+            ((ShellViewModel) context.Target).Result = (await numberOfPrimes).ToString();
             
-
             Completed(this, new ResultCompletionEventArgs());
         }
 

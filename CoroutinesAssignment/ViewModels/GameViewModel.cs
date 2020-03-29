@@ -19,8 +19,7 @@ namespace CoroutinesAssignment.ViewModels
         public int ClickObjective
         {
             get { return _clickObjective; }
-            set
-            { _clickObjective = value; }
+            set { _clickObjective = value; }
         }
 
         private void CheckGameFinished()
