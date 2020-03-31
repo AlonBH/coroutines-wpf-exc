@@ -52,7 +52,7 @@ namespace CoroutinesAssignment.ViewModels
         {
             var numberOfPrimes = CountAllPrimeNumbersAsync();
 
-            _windowManager.ShowDialog(this);
+            _windowManager.ShowWindow(this);
 
             ((ShellViewModel) context.Target).Result = (await numberOfPrimes).ToString();
             

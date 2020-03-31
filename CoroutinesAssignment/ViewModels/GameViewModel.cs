@@ -61,7 +61,7 @@ namespace CoroutinesAssignment.ViewModels
             gameTimer.Elapsed += timerOnElapsed(context);
             gameTimer.Start();
 
-            _windowManager.ShowDialog(this);
+            _windowManager.ShowWindow(this);
         }
 
         private ElapsedEventHandler timerOnElapsed(CoroutineExecutionContext context)

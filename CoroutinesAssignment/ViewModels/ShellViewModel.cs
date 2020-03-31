@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Caliburn.Micro;
 using CoroutinesAssignment.ViewModels.Interfaces;
 
@@ -21,7 +20,6 @@ namespace CoroutinesAssignment.ViewModels
             }
         }
 
-
         public ShellViewModel(IWindowManager windowManager)
         {
             _windowManager = windowManager;
@@ -29,9 +27,10 @@ namespace CoroutinesAssignment.ViewModels
 
         public IEnumerable<IResult> StartGame()
         {
-            yield return new GameViewModel(_windowManager);
-            yield return new GameViewModel(_windowManager);
-            yield return new GameViewModel(_windowManager);
+            for (var i = 0; i < 3; i++)
+            {
+                yield return new GameViewModel(_windowManager);
+            }
 
             Result = "כל הכבוד";
         }
